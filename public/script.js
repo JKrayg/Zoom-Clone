@@ -3,7 +3,7 @@ const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer(undefined, {
     secure: true,
     host: 'https://agile-shore-99216.herokuapp.com',
-    port: '3001'
+    port: '9000'
 })
 
 const myVideo = document.createElement("video");
