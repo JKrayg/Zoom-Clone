@@ -2,7 +2,8 @@ const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer(undefined, {
     host: '/',
-    port: '3001'
+    port: '3001',
+    path: 'https://agile-shore-99216.herokuapp.com/'
 })
 
 const myVideo = document.createElement("video");
