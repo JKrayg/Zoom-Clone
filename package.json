@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/JKrayg/Zoom-Clone/issues"
   },
-  "homepage": "https://github.com/JKrayg/Zoom-Clone#readme",
+  "homepage": "https://agile-shore-99216.herokuapp.com/",
   "dependencies": {
     "ejs": "^3.1.3",
     "express": "^4.17.1",
