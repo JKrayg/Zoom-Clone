@@ -1,7 +1,16 @@
 const socket = io("/");
-const videoGrid = document.getElementById("video-grid");
+const fs = require('fs');
 const { PeerServer } = require('peer');
-const peerServer = PeerServer({ port: 9000, path: 'agile-shore-99216.herokuapp.com/' });
+const videoGrid = document.getElementById("video-grid");
+
+const peerServer = PeerServer({
+  port: 9000,
+  ssl: {
+    key: fs.readFileSync(process.env.SERVER_KEY),
+    cert: fs.readFileSync(process.env.SERVER_CERTIFICATE)
+  }
+});
+
 const myPeer = new Peer(undefined, {
     host: '/',
     port: '3001'
