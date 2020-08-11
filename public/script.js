@@ -1,15 +1,5 @@
 const socket = io("/");
-const fs = require('fs');
-const { PeerServer } = require('peer');
 const videoGrid = document.getElementById("video-grid");
-
-const peerServer = PeerServer({
-  port: 9000,
-  ssl: {
-    key: fs.readFileSync(process.env.SERVER_KEY),
-    cert: fs.readFileSync(process.env.SERVER_CERTIFICATE)
-  }
-});
 
 const myPeer = new Peer(undefined, {
     host: '/',
