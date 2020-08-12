@@ -10,11 +10,11 @@ const PORT = process.env.PORT || 3000;
 
 if(PORT === process.env.PORT) {
     const peerServer = PeerServer({
-        host: 'https://agile-shore-99216.herokuapp.com/',
+        host: 'agile-shore-99216.herokuapp.com',
         port: 9000,
         ssl: {
-        key: fs.readFileSync('keys/server.key'),
-        cert: fs.readFileSync('keys/server.csr')
+        key: fs.readFileSync('server.key'),
+        cert: fs.readFileSync('server.csr')
         }
     });
     app.use('/myapp', peerServer);

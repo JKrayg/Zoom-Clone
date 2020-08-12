@@ -22,7 +22,7 @@ if (window.location.href[7] == "l")  {
 } else {
     myPeer = new Peer(undefined, {
         host: 'agile-shore-99216.herokuapp.com',
-        port: '443'
+        port: '9001'
     });
 }
 
