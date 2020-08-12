@@ -13,10 +13,8 @@ if(PORT === process.env.PORT) {
         host: 'agile-shore-99216.herokuapp.com',
         port: process.env.PORT || 9000,
         ssl: {
-        key: fs.readFileSync('server.key', "utf8", function(error, data) {
-            console.log(data)
-        }),
-        cert: fs.readFileSync('server.csr', {encoding: "base64"})
+        key: fs.readFileSync('server.key', "utf8"),
+        cert: fs.readFileSync('server.csr', "utf8")
         }
     });
     app.use('/myapp', peerServer);
