@@ -17,7 +17,7 @@ if(PORT === process.env.PORT) {
     //     cert: fs.readFileSync('server.csr', "utf8")
     //     }
     // });
-    const peerServer = PeerServer({ port: 9000, path: '/myapp' });
+    const peerServer = PeerServer({ host: 'agile-shore-99216.herokuapp.com', port: 9000, path: '/myapp' });
     app.use('/myapp', peerServer);
 }
 
