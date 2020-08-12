@@ -46,9 +46,7 @@ io.on("connection", socket => {
     })
 })
 
-if (PORT === 3000) {
-    server.listen(PORT)
-}
+server.listen(PORT)
 
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
