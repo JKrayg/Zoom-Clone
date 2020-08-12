@@ -8,17 +8,22 @@ const { PeerServer } = require('peer');
 const { v4: uuidV4 } = require("uuid")
 const PORT = process.env.PORT || 3000;
 
-const peerServer = PeerServer({
-    port: 9000,
-    ssl: {
-      key: fs.readFileSync("./server.pass.key"),
-      cert: fs.readFileSync("./server.csr")
-    }
-});
+if(PORT === process.env.PORT) {
+    const peerServer = PeerServer({
+        host: 'https://agile-shore-99216.herokuapp.com/',
+        port: 9000,
+        ssl: {
+        key: fs.readFileSync('./keys/server.key'),
+        cert: fs.readFileSync('./keys/server.csr')
+        }
+    });
+    app.use('/myapp', peerServer);
+}
+
+
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
-//app.use('/peerjs', peerServer);
 
 app.get("/", (req, res) => {
     res.redirect(`/${ uuidV4() }`)
@@ -40,10 +45,9 @@ io.on("connection", socket => {
     })
 })
 
-
-
-server.listen(PORT)
-
+if (PORT === 3000) {
+    server.listen(PORT)
+}
 
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());

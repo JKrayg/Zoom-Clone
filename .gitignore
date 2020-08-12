@@ -1,4 +1,5 @@
 node_modules
+keys
 server.csr
 server.key
 server.pass.key

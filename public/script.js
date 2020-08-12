@@ -1,10 +1,30 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
+var myPeer = {};
 
-const myPeer = new Peer(undefined, {
-    host: '/',
-    port: '3001'
-})
+// const myPeer = new Peer(undefined, {
+//     host: '/',
+//     port: '3001'
+// })
+
+// const herokuPeer = new Peer(undefined, {
+//     host: 'agile-shore-99216.herokuapp.com/',
+//     port: '443'
+// })
+
+console.log(window.location.href[7])
+
+if (window.location.href[7] == "l")  {
+    myPeer = new Peer(undefined, {
+        host: '/',
+        port: '3001'
+    });
+} else {
+    myPeer = new Peer(undefined, {
+        host: 'agile-shore-99216.herokuapp.com/',
+        port: '443'
+    });
+}
 
 const myVideo = document.createElement("video");
 myVideo.muted = true;
@@ -16,7 +36,7 @@ navigator.mediaDevices.getUserMedia({
 }). then(stream => {
     addVideoStream(myVideo, stream)
 
-    myPeer.on("call", call => {
+    yourPeer.on("call", call => {
         call.answer(stream)
         const video = document.createElement("video")
 
@@ -34,12 +54,12 @@ socket.on("user-disconnected", userId => {
     if (peers[userId]) peers[userId].close();
 })
 
-myPeer.on("open", id => {
+yourPeer.on("open", id => {
     socket.emit("join-room", ROOM_ID, id)
 })
 
 function connectToNewUser(userId, stream) {
-    const call = myPeer.call(userId, stream)
+    const call = yourPeer.call(userId, stream)
     const video = document.createElement("video")
     call.on("stream", userVideoStream => {
         addVideoStream(video, userVideoStream)
