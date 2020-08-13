@@ -17,7 +17,8 @@ console.log(window.location.href[7])
 if (window.location.href[7] == "l")  {
     myPeer = new Peer(undefined, {
         host: '/',
-        port: '3001'
+        port: '3001',
+        path: '/myapp'
     });
 } else {
     myPeer = new Peer(undefined, {
